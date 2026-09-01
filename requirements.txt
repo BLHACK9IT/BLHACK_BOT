@@ -1,0 +1,10 @@
+pandas>=2.2,<4
+python-dotenv>=1.0,<2
+requests>=2.31,<3
+twelvedata>=1.2,<2
+pytest>=8,<10
+
+# MetaQuotes publishes Windows wheels only. On Unix this marker keeps the
+# development/test environment installable. A live MT5 connection must run
+# with Windows Python alongside the MT5 terminal (native Windows or Wine).
+MetaTrader5>=5.0; platform_system == "Windows"
