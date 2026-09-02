@@ -52,7 +52,7 @@ wine "$WINDOWS_PYTHON" -m venv "$(winepath -w "$PWD/.venv-wine")"
 wine "$PWD/.venv-wine/Scripts/python.exe" -m pip install -r "$(winepath -w "$PWD/requirements.txt")"
 ```
 
-The project pins NumPy below 2 because NumPy 2.x requires UCRT functions that
+The project pins NumPy below 2 because NumPy 2.x requires UCRT functions that 
 Ubuntu's Wine 9 does not currently implement; NumPy 1.26 is verified with this
 bot, pandas, and the official MetaTrader5 package.
 
