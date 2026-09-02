@@ -63,7 +63,7 @@ use Wine but normally create `~/.mt5`; do not mix that terminal with Python in
 Python and this project environment in `~/.mt5` instead.
 
 Once MT5 and the Wine environment share a prefix, run the bot with:
-
+ 
 ```bash
 wine "$PWD/.venv-wine/Scripts/python.exe" "$(winepath -w "$PWD/main.py")"
 ```
