@@ -41,6 +41,33 @@ configured Wine environment. See the official
 [MT5 Python integration documentation](https://www.mql5.com/en/docs/python_metatrader5)
 and [`initialize()` reference](https://www.mql5.com/en/docs/python_metatrader5/mt5initialize_py).
 
+### MT5 runtime on this Unix host
+
+This machine has Windows Python 3.10 in the default `~/.wine` prefix. Create a
+separate project environment for the Windows-only MT5 runtime:
+
+```bash
+WINDOWS_PYTHON="$HOME/.wine/drive_c/users/$USER/AppData/Local/Programs/Python/Python310/python.exe"
+wine "$WINDOWS_PYTHON" -m venv "$(winepath -w "$PWD/.venv-wine")"
+wine "$PWD/.venv-wine/Scripts/python.exe" -m pip install -r "$(winepath -w "$PWD/requirements.txt")"
+```
+
+The project pins NumPy below 2 because NumPy 2.x requires UCRT functions that
+Ubuntu's Wine 9 does not currently implement; NumPy 1.26 is verified with this
+bot, pandas, and the official MetaTrader5 package.
+
+MT5 must be installed and running in that same `~/.wine` prefix. MetaQuotes'
+[official Linux instructions](https://www.metatrader5.com/en/terminal/help/start_advanced/install_linux)
+use Wine but normally create `~/.mt5`; do not mix that terminal with Python in
+`~/.wine`. Either install both components in `~/.wine`, or install Windows
+Python and this project environment in `~/.mt5` instead.
+
+Once MT5 and the Wine environment share a prefix, run the bot with:
+
+```bash
+wine "$PWD/.venv-wine/Scripts/python.exe" "$(winepath -w "$PWD/main.py")"
+```
+
 ## Configuration
 
 Copy `.env.example` to `.env`. Required values are:

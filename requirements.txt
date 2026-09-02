@@ -1,3 +1,6 @@
+# NumPy 2.x calls UCRT functions that Wine 9 does not implement. The 1.26
+# series supports both the native Linux development venv and the Wine MT5 venv.
+numpy>=1.26,<2
 pandas>=2.2,<4
 python-dotenv>=1.0,<2
 requests>=2.31,<3
