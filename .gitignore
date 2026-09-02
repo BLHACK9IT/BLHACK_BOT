@@ -30,7 +30,6 @@ logs/
 
 # Editors and operating systems
 .idea/
-.vscode/
 .DS_Store
 Thumbs.db
 
@@ -39,3 +38,7 @@ Thumbs.db
 /Broker_api_tesfile.py
 /code_file.txt
 *.zip
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
